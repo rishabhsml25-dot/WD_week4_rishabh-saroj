@@ -1,0 +1,1062 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Portfolio | Web Developer</title>
+
+    <!-- ================= CSS ================= -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #222;
+            background: #ffffff;
+            transition: 0.3s;
+        }
+
+        body.dark {
+            background: #111827;
+            color: #f3f4f6;
+        }
+
+        /* NAVBAR */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        body.dark header {
+            background: #1f2937;
+        }
+
+        .navbar {
+            max-width: 1100px;
+            margin: auto;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            color: #2563eb;
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: inherit;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .menu-btn,
+        #themeBtn {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 22px;
+        }
+
+        .menu-btn {
+            display: none;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 90vh;
+            padding: 50px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            background: linear-gradient(
+                135deg,
+                #eff6ff,
+                #dbeafe
+            );
+        }
+
+        body.dark .hero {
+            background: linear-gradient(
+                135deg,
+                #111827,
+                #1e3a8a
+            );
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .small-title {
+            color: #2563eb;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 80px);
+            margin: 10px 0;
+        }
+
+        .hero h2 {
+            color: #2563eb;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 8px;
+            border: none;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .secondary {
+            background: transparent;
+            color: #2563eb;
+            border: 2px solid #2563eb;
+        }
+
+        /* SECTIONS */
+        .section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 80px 20px;
+        }
+
+        .gray {
+            max-width: none;
+            background: #f8fafc;
+        }
+
+        body.dark .gray {
+            background: #172033;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title p {
+            color: #2563eb;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+        }
+
+        /* ABOUT */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-grid h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .about-grid p {
+            margin-bottom: 15px;
+        }
+
+        .about-card {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .about-card div {
+            padding: 25px 10px;
+            text-align: center;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        body.dark .about-card div {
+            background: #1f2937;
+        }
+
+        .about-card span {
+            display: block;
+            color: #2563eb;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        /* SKILLS */
+        .skills-grid {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            transition: 0.3s;
+        }
+
+        body.dark .skill-card {
+            background: #1f2937;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .skill-icon {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 10px;
+        }
+
+        /* PROJECTS */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        body.dark .project-card {
+            background: #1f2937;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .project-image {
+            height: 180px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 65px;
+            background: linear-gradient(
+                135deg,
+                #2563eb,
+                #7c3aed
+            );
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content h3 {
+            margin-bottom: 10px;
+        }
+
+        .project-content span {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 5px 3px 0 0;
+            border-radius: 20px;
+            background: #dbeafe;
+            color: #1d4ed8;
+            font-size: 12px;
+        }
+
+        /* CONTACT */
+        .contact-container {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .contact-info p {
+            margin: 15px 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 15px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        #formMessage {
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: #111827;
+            color: white;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+
+                display: none;
+                flex-direction: column;
+
+                padding: 25px;
+
+                background: white;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            body.dark .nav-links {
+                background: #1f2937;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .about-grid,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .navbar {
+                padding: 15px;
+            }
+
+            .hero {
+                min-height: 80vh;
+            }
+
+            .hero h2 {
+                font-size: 24px;
+            }
+
+            .section {
+                padding: 60px 15px;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            .about-card {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header>
+        <nav class="navbar">
+
+            <a href="#home" class="logo">
+                MyPortfolio
+            </a>
+
+            <button class="menu-btn" id="menuBtn">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+
+                <li>
+                    <a href="#about">About</a>
+                </li>
+
+                <li>
+                    <a href="#skills">Skills</a>
+                </li>
+
+                <li>
+                    <a href="#projects">Projects</a>
+                </li>
+
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
+
+                <li>
+                    <button id="themeBtn">
+                        🌙
+                    </button>
+                </li>
+
+            </ul>
+
+        </nav>
+    </header>
+
+
+    <!-- ================= HOME ================= -->
+
+    <main>
+
+        <section id="home" class="hero">
+
+            <div class="hero-content">
+
+                <p class="small-title">
+                    HELLO, I'M
+                </p>
+
+                <h1>
+                    Your Name
+                </h1>
+
+                <h2>
+                    Web Developer
+                </h2>
+
+                <p>
+                    I create responsive, modern and user-friendly
+                    websites using HTML, CSS and JavaScript.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#projects" class="btn">
+                        View Projects
+                    </a>
+
+                    <a href="#contact" class="btn secondary">
+                        Contact Me
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ABOUT ================= -->
+
+        <section id="about" class="section">
+
+            <div class="section-title">
+
+                <p>
+                    GET TO KNOW ME
+                </p>
+
+                <h2>
+                    About Me
+                </h2>
+
+            </div>
+
+            <div class="about-grid">
+
+                <div>
+
+                    <h3>
+                        Who Am I?
+                    </h3>
+
+                    <p>
+                        I am a passionate aspiring web developer
+                        interested in creating attractive and
+                        responsive websites.
+                    </p>
+
+                    <p>
+                        This portfolio project demonstrates the
+                        skills I learned during my Web Development
+                        Internship.
+                    </p>
+
+                    <p>
+                        I enjoy learning new technologies and
+                        improving my development skills.
+                    </p>
+
+                </div>
+
+                <div class="about-card">
+
+                    <div>
+                        <span>1+</span>
+                        <p>Projects</p>
+                    </div>
+
+                    <div>
+                        <span>4+</span>
+                        <p>Skills</p>
+                    </div>
+
+                    <div>
+                        <span>100%</span>
+                        <p>Responsive</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SKILLS ================= -->
+
+        <section id="skills" class="section gray">
+
+            <div class="section-title">
+
+                <p>
+                    MY EXPERTISE
+                </p>
+
+                <h2>
+                    Skills
+                </h2>
+
+            </div>
+
+            <div class="skills-grid">
+
+                <div class="skill-card">
+
+                    <div class="skill-icon">
+                        🌐
+                    </div>
+
+                    <h3>
+                        HTML5
+                    </h3>
+
+                    <p>
+                        Semantic and well-structured web pages.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <div class="skill-icon">
+                        🎨
+                    </div>
+
+                    <h3>
+                        CSS3
+                    </h3>
+
+                    <p>
+                        Responsive layouts, Flexbox, Grid
+                        and animations.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <div class="skill-icon">
+                        ⚡
+                    </div>
+
+                    <h3>
+                        JavaScript
+                    </h3>
+
+                    <p>
+                        DOM manipulation, events and
+                        interactive features.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <div class="skill-icon">
+                        🔧
+                    </div>
+
+                    <h3>
+                        Git & GitHub
+                    </h3>
+
+                    <p>
+                        Version control, repositories
+                        and deployment.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PROJECTS ================= -->
+
+        <section id="projects" class="section">
+
+            <div class="section-title">
+
+                <p>
+                    MY WORK
+                </p>
+
+                <h2>
+                    Projects
+                </h2>
+
+            </div>
+
+            <div class="projects-grid">
+
+
+                <article class="project-card">
+
+                    <div class="project-image">
+                        💻
+                    </div>
+
+                    <div class="project-content">
+
+                        <h3>
+                            Personal Portfolio
+                        </h3>
+
+                        <p>
+                            A responsive portfolio website
+                            developed using HTML, CSS and
+                            JavaScript.
+                        </p>
+
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+
+                    </div>
+
+                </article>
+
+
+                <article class="project-card">
+
+                    <div class="project-image">
+                        🍔
+                    </div>
+
+                    <div class="project-content">
+
+                        <h3>
+                            Restaurant Website
+                        </h3>
+
+                        <p>
+                            A modern restaurant website with
+                            responsive sections and
+                            user-friendly navigation.
+                        </p>
+
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+
+                    </div>
+
+                </article>
+
+
+                <article class="project-card">
+
+                    <div class="project-image">
+                        🛒
+                    </div>
+
+                    <div class="project-content">
+
+                        <h3>
+                            E-Commerce UI
+                        </h3>
+
+                        <p>
+                            A responsive shopping interface
+                            demonstrating product cards and
+                            interactive UI.
+                        </p>
+
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CONTACT ================= -->
+
+        <section id="contact" class="section gray">
+
+            <div class="section-title">
+
+                <p>
+                    GET IN TOUCH
+                </p>
+
+                <h2>
+                    Contact Me
+                </h2>
+
+            </div>
+
+            <div class="contact-container">
+
+
+                <div class="contact-info">
+
+                    <h3>
+                        Let's Talk
+                    </h3>
+
+                    <p>
+                        Have a project idea or want to connect?
+                        Send me a message.
+                    </p>
+
+                    <p>
+                        📧 yourmail@example.com
+                    </p>
+
+                    <p>
+                        📍 India
+                    </p>
+
+                </div>
+
+
+                <form id="contactForm">
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Your Name"
+                    >
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Your Email"
+                    >
+
+                    <textarea
+                        id="message"
+                        rows="6"
+                        placeholder="Your Message"
+                    ></textarea>
+
+                    <button
+                        type="submit"
+                        class="btn"
+                    >
+                        Send Message
+                    </button>
+
+                    <p id="formMessage"></p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Your Name. All Rights Reserved.
+        </p>
+
+        <p>
+            Built with HTML, CSS & JavaScript
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        // MOBILE MENU
+
+        const menuBtn =
+            document.getElementById("menuBtn");
+
+        const navLinks =
+            document.getElementById("navLinks");
+
+
+        menuBtn.addEventListener("click", function () {
+
+            navLinks.classList.toggle("active");
+
+        });
+
+
+        // CLOSE MOBILE MENU AFTER CLICK
+
+        document
+            .querySelectorAll(".nav-links a")
+            .forEach(function(link) {
+
+                link.addEventListener("click", function() {
+
+                    navLinks.classList.remove("active");
+
+                });
+
+            });
+
+
+        // DARK / LIGHT MODE
+
+        const themeBtn =
+            document.getElementById("themeBtn");
+
+
+        themeBtn.addEventListener("click", function() {
+
+            document.body.classList.toggle("dark");
+
+
+            if (
+                document.body.classList.contains("dark")
+            ) {
+
+                themeBtn.textContent = "☀️";
+
+            } else {
+
+                themeBtn.textContent = "🌙";
+
+            }
+
+        });
+
+
+        // CONTACT FORM
+
+        const contactForm =
+            document.getElementById("contactForm");
+
+        const formMessage =
+            document.getElementById("formMessage");
+
+
+        contactForm.addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                const name =
+                    document.getElementById("name")
+                    .value.trim();
+
+
+                const email =
+                    document.getElementById("email")
+                    .value.trim();
+
+
+                const message =
+                    document.getElementById("message")
+                    .value.trim();
+
+
+                // EMPTY FIELD CHECK
+
+                if (
+                    name === "" ||
+                    email === "" ||
+                    message === ""
+                ) {
+
+                    formMessage.textContent =
+                        "Please fill all fields.";
+
+                    formMessage.style.color = "red";
+
+                    return;
+
+                }
+
+
+                // EMAIL VALIDATION
+
+                if (
+                    !email.includes("@") ||
+                    !email.includes(".")
+                ) {
+
+                    formMessage.textContent =
+                        "Please enter a valid email.";
+
+                    formMessage.style.color = "red";
+
+                    return;
+
+                }
+
+
+                // SUCCESS MESSAGE
+
+                formMessage.textContent =
+                    "Message submitted successfully!";
+
+                formMessage.style.color = "green";
+
+
+                // CLEAR FORM
+
+                contactForm.reset();
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>
